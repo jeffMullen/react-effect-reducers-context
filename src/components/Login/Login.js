@@ -11,6 +11,22 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+  // useEffect runs after each time the component is mounted including the first time
+  // When there is not dependency array
+  // If there is an empty dependency array then it will run only after the first time
+  // If the dependency array contains a variable then each time that variable is changed, the hook will run
+
+  // A cleanup function will run BEFORE the effect function runs but NOT before the first effect function
+
+  // If there is no dependecy in the array but there is an effect cleanup it will run after the component is unmounted
+  useEffect(() => {
+    console.log("EFFECT RUNNING");
+
+    return () => {
+      console.log("EFFECT CLEANUP");
+    };
+  }, []);
+
   useEffect(() => {
     // Debouncing for validity
     const identifier = setTimeout(() => {
